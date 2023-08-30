@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase.config';
 
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
@@ -44,6 +45,14 @@ function SignUp() {
       await updateProfile(auth.currentUser, {
         displayName: name,
       });
+
+      const formDataCopy = { ...formData }; // Not to change the formData state
+      delete formDataCopy.password; // Delete the password from the formDataCopy
+      formDataCopy.timestamp = serverTimestamp(); // Add the timestamp to the formDataCopy
+
+      // Add a new user in collection "users"
+      // So each listing document has a reference to a specific user in the users collection
+      await setDoc(doc(db, 'users', user.uid), formDataCopy);
 
       navigate('/');
     } catch (error) {
