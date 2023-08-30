@@ -6,7 +6,7 @@ import './index.css';
 import App from './App';
 import Explore from './pages/Explore';
 import Offers from './pages/Offers';
-// import Profile from './pages/Profile';
+import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Explore /> },
       { path: 'offers', element: <Offers /> },
-      { path: 'profile', element: <SignIn /> }, // Replace with <Profile />
+      { path: 'profile', element: <Profile /> },
       { path: 'sign-in', element: <SignIn /> },
       { path: 'sign-up', element: <SignUp /> },
       { path: 'forgot-password', element: <ForgotPassword /> },
