@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { getAuth, updateProfile, updateEmail } from 'firebase/auth';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase.config';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+const auth = getAuth();
+
 function Profile() {
-  const auth = getAuth();
   const [changeDetails, setChangeDetails] = useState(false);
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
@@ -99,5 +100,10 @@ function Profile() {
     </div>
   );
 }
+
+// If user is signed out, redirect to sign in page
+export const loader = () => {
+  return !auth.currentUser ? redirect('/sign-in') : null;
+};
 
 export default Profile;
