@@ -8,6 +8,7 @@ import Explore from './pages/Explore';
 import Category from './pages/Category';
 import Offers from './pages/Offers';
 import Profile, { loader as profileLoader } from './pages/Profile';
+import CreateListing from './pages/CreateListing';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       { path: 'category/:categoryName', element: <Category /> },
       { path: 'offers', element: <Offers /> },
       { path: 'profile', element: <Profile />, loader: profileLoader },
+      { path: 'create-listing', element: <CreateListing /> },
       { path: 'sign-in', element: <SignIn /> },
       { path: 'sign-up', element: <SignUp /> },
       { path: 'forgot-password', element: <ForgotPassword /> },
