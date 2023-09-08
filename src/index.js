@@ -5,8 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Explore from './pages/Explore';
+import Category from './pages/Category';
 import Offers from './pages/Offers';
-import Profile, { loader } from './pages/Profile';
+import Profile, { loader as profileLoader } from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
@@ -18,8 +19,9 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Explore /> },
+      { path: 'category/:categoryName', element: <Category /> },
       { path: 'offers', element: <Offers /> },
-      { path: 'profile', element: <Profile />, loader },
+      { path: 'profile', element: <Profile />, loader: profileLoader },
       { path: 'sign-in', element: <SignIn /> },
       { path: 'sign-up', element: <SignUp /> },
       { path: 'forgot-password', element: <ForgotPassword /> },
