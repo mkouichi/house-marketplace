@@ -800,7 +800,8 @@ a.active > p {
 .formInputFile {
   width: 100%;
 }
-.formInputFile::-webkit-file-upload-button {
+.formInputFile::file-selector-button {
+  cursor: pointer;
   background-color: #00cc66;
   border: none;
   color: #ffffff;
