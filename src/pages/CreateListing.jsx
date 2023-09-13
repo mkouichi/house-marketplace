@@ -7,6 +7,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from 'firebase/storage';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
@@ -126,7 +127,7 @@ function CreateListing() {
       location =
         data.status === 'ZERO_RESULTS'
           ? undefined
-          : data.results[0]?.formatted_address;
+          : data.results[0]?.formatted_address; // formatted_address is not always reliable
 
       if (location === undefined || location.includes('undefined')) {
         setLoading(false);
@@ -136,7 +137,6 @@ function CreateListing() {
     } else {
       geolocation.lat = latitude;
       geolocation.lng = longitude;
-      location = address;
     }
 
     // Store image in Firebase
@@ -188,9 +188,28 @@ function CreateListing() {
       return;
     });
 
-    console.log(imgUrls);
+    // Object to be added to the database
+    const formDataCopy = {
+      ...formData,
+      imgUrls,
+      geolocation,
+      timestamp: serverTimestamp(),
+    };
+
+    // Clean up formDataCopy before sending
+    delete formDataCopy.images;
+    delete formDataCopy.address;
+    !formDataCopy.offer && delete formDataCopy.discountedPrice;
+    formDataCopy.location = address; // Set location to address string that's typed in since formatted_address is not always reliable
+
+    // Add data to the database
+    const docRef = await addDoc(collection(db, 'listings'), formDataCopy);
 
     setLoading(false);
+    toast.success('Listing created');
+
+    // Navigate to the created listing page
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
   };
 
   if (loading) return <Spinner />;

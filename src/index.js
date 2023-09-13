@@ -21,6 +21,10 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Explore /> },
       { path: 'category/:categoryName', element: <Category /> },
+      {
+        path: 'category/:categoryName/:listingId',
+        element: <h1>Single listing page</h1>,
+      },
       { path: 'offers', element: <Offers /> },
       { path: 'profile', element: <Profile />, loader: profileLoader },
       { path: 'create-listing', element: <CreateListing /> },
