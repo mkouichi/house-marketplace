@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import { db } from '../firebase.config';
 
 import Spinner from '../components/Spinner';
-import LisingItem from '../components/LisingItem';
+import LisingItem from '../components/ListingItem';
 
 function Category() {
   const [listings, setListings] = useState(null);

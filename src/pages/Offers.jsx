@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import {
   collection,
   getDocs,
@@ -12,13 +11,11 @@ import { toast } from 'react-toastify';
 import { db } from '../firebase.config';
 
 import Spinner from '../components/Spinner';
-import LisingItem from '../components/LisingItem';
+import ListingItem from '../components/ListingItem';
 
 function Offers() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const params = useParams();
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -69,7 +66,7 @@ function Offers() {
           <main>
             <ul className='categoryListings'>
               {listings.map((listing) => (
-                <LisingItem
+                <ListingItem
                   key={listing.id}
                   listing={listing.data}
                   id={listing.id}
