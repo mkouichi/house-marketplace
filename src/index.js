@@ -5,11 +5,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Explore from './pages/Explore';
-import Category from './pages/Category';
 import Offers from './pages/Offers';
 import Profile, { loader as profileLoader } from './pages/Profile';
-import CreateListing from './pages/CreateListing';
+import Category from './pages/Category';
 import Listing from './pages/Listing';
+import Contact from './pages/Contact';
+import CreateListing from './pages/CreateListing';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
@@ -21,13 +22,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Explore /> },
-      { path: 'category/:categoryName', element: <Category /> },
-      {
-        path: 'category/:categoryName/:listingId',
-        element: <Listing />,
-      },
       { path: 'offers', element: <Offers /> },
       { path: 'profile', element: <Profile />, loader: profileLoader },
+      { path: 'category/:categoryName', element: <Category /> },
+      { path: 'category/:categoryName/:listingId', element: <Listing /> },
+      { path: 'contact/:landlordId', element: <Contact /> },
       { path: 'create-listing', element: <CreateListing /> },
       { path: 'sign-in', element: <SignIn /> },
       { path: 'sign-up', element: <SignUp /> },
