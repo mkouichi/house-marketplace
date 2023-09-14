@@ -9,6 +9,7 @@ import Category from './pages/Category';
 import Offers from './pages/Offers';
 import Profile, { loader as profileLoader } from './pages/Profile';
 import CreateListing from './pages/CreateListing';
+import Listing from './pages/Listing';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       { path: 'category/:categoryName', element: <Category /> },
       {
         path: 'category/:categoryName/:listingId',
-        element: <h1>Single listing page</h1>,
+        element: <Listing />,
       },
       { path: 'offers', element: <Offers /> },
       { path: 'profile', element: <Profile />, loader: profileLoader },
