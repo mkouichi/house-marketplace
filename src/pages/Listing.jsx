@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { getAuth } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase.config';
@@ -84,7 +85,22 @@ function Listing() {
 
         <p className='listingLocationTitle'>Location</p>
 
-        {/* MAP */}
+        <div className='leafletContainer'>
+          <MapContainer
+            center={[listing.geolocation.lat, listing.geolocation.lng]}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{ width: '100%', height: '100%' }}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            />
+            <Marker
+              position={[listing.geolocation.lat, listing.geolocation.lng]}>
+              <Popup>{listing.location}</Popup>
+            </Marker>
+          </MapContainer>
+        </div>
 
         {auth.currentUser?.uid !== listing.userRef && (
           <Link
