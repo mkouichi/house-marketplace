@@ -80,13 +80,13 @@ li {
   cursor: pointer;
   position: absolute;
   top: -3%;
-  right: -2%;
+  right: -1%;
 }
 .editIcon {
   cursor: pointer;
   position: absolute;
   top: -3.4%;
-  right: 20px;
+  right: 1.5rem;
 }
 
 .pageContainer,
@@ -412,8 +412,13 @@ a.active > p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   position: relative;
+}
+@media (min-width: 600px) {
+  .categoryListing {
+    margin-bottom: 2.5rem;
+  }
 }
 
 .categoryListingLink {
@@ -425,6 +430,11 @@ a.active > p {
   height: 100px;
   border-radius: 1.5rem;
   object-fit: cover;
+}
+@media (max-width: 600px) {
+  .categoryListingImg {
+    margin-top: 1.4rem;
+  }
 }
 @media (min-width: 1024px) {
   .categoryListingImg {
@@ -447,6 +457,11 @@ a.active > p {
   font-size: 0.7rem;
   opacity: 0.8;
   margin-bottom: 0;
+}
+@media (max-width: 600px) {
+  .categoryListingLocation {
+    margin-top: 1.4rem;
+  }
 }
 
 .categoryListingName {
@@ -714,7 +729,7 @@ a.active > p {
   font-weight: 600;
 }
 
-.lisitingsList {
+.listingsList {
   padding: 0;
 }
 
