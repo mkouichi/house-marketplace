@@ -11,6 +11,7 @@ import Category from './pages/Category';
 import Listing from './pages/Listing';
 import Contact from './pages/Contact';
 import CreateListing from './pages/CreateListing';
+import EditListing from './pages/EditListing';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: 'category/:categoryName/:listingId', element: <Listing /> },
       { path: 'contact/:landlordId', element: <Contact /> },
       { path: 'create-listing', element: <CreateListing /> },
+      { path: 'edit-listing/:listingId', element: <EditListing /> },
       { path: 'sign-in', element: <SignIn /> },
       { path: 'sign-up', element: <SignUp /> },
       { path: 'forgot-password', element: <ForgotPassword /> },
