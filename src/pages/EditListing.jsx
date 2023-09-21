@@ -32,6 +32,7 @@ const initialFormState = {
 };
 
 function EditListing() {
+  // eslint-disable-next-line
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
   const [listing, setListing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -193,6 +194,8 @@ function EditListing() {
                 break;
               case 'running':
                 console.log('Upload is running');
+                break;
+              default:
                 break;
             }
           },
